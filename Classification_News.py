@@ -58,6 +58,7 @@ train_set= featuresets[:1000]
 test_set = featuresets[1000:]
 classifier = nltk.NaiveBayesClassifier.train(train_set)
 print("NaiveBayesClassifier Accuracy     =>"+str(nltk.classify.accuracy(classifier, test_set)*100))
+classifier.show_most_informative_features(5)
 # To Test This Application Put in File 1.txt and try to make the text large as possible because the features not large (small data set)
 #InputList=[]
 #with open("1.txt", 'r') as f:
