@@ -1,6 +1,7 @@
 import random
 import nltk
 import collections
+from nltk.classify import DecisionTreeClassifier
 
 list_ = []
 words = []
@@ -41,7 +42,7 @@ print(len(documents))
 print(len(words))
 
 all_words = nltk.FreqDist(words)
-word_features = list(all_words.keys())[:1000]
+word_features = list(all_words.keys())[:800]
 
 
 
@@ -53,9 +54,16 @@ def document_features(document):
     return features
 
 featuresets = [(document_features(d), c) for (d, c) in documents]
-train_set= featuresets[1200:]
-test_set = featuresets[:200]
+train_set= featuresets[:1000]
+test_set = featuresets[1000:]
 classifier = nltk.NaiveBayesClassifier.train(train_set)
-print(nltk.classify.accuracy(classifier, test_set)*100)
-classifier.show_most_informative_features(8)
+print("NaiveBayesClassifier Accuracy     =>"+str(nltk.classify.accuracy(classifier, test_set)*100))
+# To Test This Application Put in File 1.txt and try to make the text large as possible because the features not large (small data set)
+#InputList=[]
+#with open("1.txt", 'r') as f:
+#    for line in f:
+#        for word in line.split():
+#            InputList.append(word)
+#            words.append(word)
+#print(classifier.classify(document_features(InputList)))
 
