@@ -62,7 +62,7 @@ classifier.show_most_informative_features(5)
 
 
 classifier = DecisionTreeClassifier.train(train_set,
-binary=False, entropy_cutoff=0.4, depth_cutoff=100, support_cutoff=30)
+binary=False, entropy_cutoff=0.4, depth_cutoff=20, support_cutoff=50)
 print("DecisionTreeClassifier Accuracy     =>"+str(nltk.classify.accuracy(classifier, test_set)*100))
 # To Test This Application Put in File 1.txt and try to make the text large as possible because the features not large (small data set)
 #InputList=[]
