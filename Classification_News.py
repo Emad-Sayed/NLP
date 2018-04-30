@@ -59,6 +59,11 @@ test_set = featuresets[1000:]
 classifier = nltk.NaiveBayesClassifier.train(train_set)
 print("NaiveBayesClassifier Accuracy     =>"+str(nltk.classify.accuracy(classifier, test_set)*100))
 classifier.show_most_informative_features(5)
+
+
+classifier = DecisionTreeClassifier.train(train_set,
+binary=False, entropy_cutoff=0.4, depth_cutoff=100, support_cutoff=30)
+print("DecisionTreeClassifier Accuracy     =>"+str(nltk.classify.accuracy(classifier, test_set)*100))
 # To Test This Application Put in File 1.txt and try to make the text large as possible because the features not large (small data set)
 #InputList=[]
 #with open("1.txt", 'r') as f:
